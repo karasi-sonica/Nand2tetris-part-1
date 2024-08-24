@@ -12,12 +12,9 @@ CHIP DMux {
     OUT a, b;
 
     PARTS:
-    // First, we need to invert the sel signal to control which output gets the input.
     Not(in=sel, out=notsel);
     
-    // And gate sends the input to output 'a' when sel is 0 (and thus notsel is 1).
     And(a=in, b=notsel, out=a);
     
-    // And gate sends the input to output 'b' when sel is 1.
     And(a=in, b=sel, out=b);
 }
